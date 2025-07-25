@@ -11,6 +11,9 @@ namespace Bank
         private readonly string m_customerName;
         private double m_balance;
 
+        public const string DebitAmountExceedsBalanceMessage = "A quantia em débito é maior do que o saldo";
+        public const string DebitAmountLessThanZeroMessage = "A quantia em débito é menor que zero";
+
         private BankAccount()
         {
 
@@ -39,13 +42,14 @@ namespace Bank
         }
         public void Debit(double amount)
         {
-            if(amount > m_balance)
+            if (amount > m_balance)
             {
-                throw new ArgumentOutOfRangeException("Amount");
+                throw new System.ArgumentOutOfRangeException("amount", amount, DebitAmountExceedsBalanceMessage);
             }
-            if(amount < 0)
+
+            if (amount < 0)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new System.ArgumentOutOfRangeException("amount", amount, DebitAmountLessThanZeroMessage);
             }
 
             m_balance -= amount; 
