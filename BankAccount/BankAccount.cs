@@ -49,6 +49,7 @@ namespace Bank
             }
 
             m_balance -= amount; 
+
         }
 
         public void Credit(double amount)
