@@ -26,6 +26,18 @@ namespace BankTests
         [TestMethod]
         public void Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange()
         {
+            // Arrange
+            double saldoInicial = 11.99;
+            double quantidaDebito = -100.00;
+            BankAccount conta = new BankAccount("Mr. Bryan Walton", saldoInicial);
+
+            // Act and assert
+            Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => conta.Debit(quantidaDebito));
+        }
+
+        [TestMethod]
+        public void Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRange()
+        {
             //Arrange
             double saldoInicial = 11.99;
             double quantiaDebito = 20.0;
